@@ -115,7 +115,7 @@ const Register = () => {
           <option value="Dietitian">Dietitian</option>
         </select>
 
-        {/* Show additional fields for Dieter */}
+        
         {formData.role === "Dieter" && (
           <>
             <input

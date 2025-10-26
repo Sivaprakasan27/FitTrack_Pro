@@ -28,7 +28,7 @@
   margin: 0 auto;
 }
 
-/* 📩 Contact Form Styling */
+/*  Contact Form Styling */
 .contact-form {
   background: rgba(255, 255, 255, 0.1);
   padding: 2rem;
@@ -82,7 +82,7 @@
   transform: scale(1.05);
 }
 
-/* 📧 Contact Info */
+/*  Contact Info */
 .contact-info {
   flex: 1 1 350px;
   display: flex;

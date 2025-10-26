@@ -1,4 +1,4 @@
-/* 🌟 AUTH PAGE WRAPPER */
+/*  AUTH PAGE WRAPPER */
 .auth-container {
   display: flex;
   flex-direction: column;
@@ -11,7 +11,7 @@
   text-align: center;
 }
 
-/* 🧾 FORM WRAPPER */
+/*  FORM WRAPPER */
 .auth-form {
   background: rgba(255, 255, 255, 0.1);
   backdrop-filter: blur(10px);
@@ -25,7 +25,7 @@
   gap: 1rem;
 }
 
-/* 🏷️ TITLE */
+/*  TITLE */
 .auth-container h2 {
   font-size: 2rem;
   margin-bottom: 1.5rem;
@@ -34,7 +34,7 @@
   font-weight: 700;
 }
 
-/* 🧍 INPUTS & SELECTS */
+/*  INPUTS & SELECTS */
 .auth-form input,
 .auth-form select {
   width: 100%;
@@ -54,7 +54,7 @@
   transform: scale(1.02);
 }
 
-/* 🟩 BUTTON */
+/*  BUTTON */
 .btn {
   background: #00ffc3;
   border: none;
@@ -73,7 +73,7 @@
   transform: translateY(-2px);
 }
 
-/* 🧾 BOTTOM TEXT */
+/* BOTTOM TEXT */
 .auth-container p {
   margin-top: 1.2rem;
   font-size: 0.95rem;
@@ -90,7 +90,7 @@
   text-decoration: underline;
 }
 
-/* 📱 RESPONSIVE DESIGN */
+/*  RESPONSIVE DESIGN */
 @media (max-width: 600px) {
   .auth-form {
     padding: 2rem 1.2rem;

@@ -1,4 +1,4 @@
-/* 🌈 Navbar Base */
+/* Navbar Base */
 .header {
   width: 100%;
   position: fixed;
@@ -9,7 +9,7 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-/* 🧭 Navbar Layout */
+/*  Navbar Layout */
 .navbar {
   display: flex;
   justify-content: space-between;
@@ -27,7 +27,7 @@
   letter-spacing: 0.5px;
 }
 
-/* 🌐 Nav Links */
+/*  Nav Links */
 .nav-links {
   display: flex;
   gap: 1.5rem;
@@ -49,7 +49,7 @@
   transform: translateY(-2px);
 }
 
-/* 🔘 Buttons */
+/* Buttons */
 .nav-butt {
   display: flex;
   align-items: center;
@@ -86,7 +86,7 @@
   background: #19e0a5;
 }
 
-/* 📱 Responsive Fix (No Hamburger) */
+/* Responsive Fix (No Hamburger) */
 @media (max-width: 850px) {
   .navbar {
     flex-direction: column;
@@ -119,7 +119,7 @@
   }
 }
 
-/* ✨ Small Device Fine-tune */
+/* Small Device Fine-tune */
 @media (max-width: 480px) {
   .navbar {
     padding: 0.7rem 1rem;

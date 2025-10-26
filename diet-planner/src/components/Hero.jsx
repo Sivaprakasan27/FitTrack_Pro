@@ -15,7 +15,7 @@ const Hero = () => {
           Stay healthy, fit, and motivated every day!
         </p>
 
-        {/* ✅ FIX: use Link instead of <a> */}
+        
         <Link to="/register" className="btn">
           Get Started
         </Link>

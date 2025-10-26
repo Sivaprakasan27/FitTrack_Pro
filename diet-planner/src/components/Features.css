@@ -1,4 +1,4 @@
-/* 🌟 FEATURES SECTION BASE */
+/*  FEATURES SECTION BASE */
 .features {
   background: linear-gradient(135deg, #004aad, #007bff);
   color: #fff;
@@ -7,7 +7,7 @@
   min-height: 100vh;
 }
 
-/* 🏷️ TITLE & SUBTEXT */
+/*  TITLE & SUBTEXT */
 .features-title {
   font-size: 2.3rem;
   font-weight: 700;
@@ -22,7 +22,7 @@
   margin-bottom: 3rem;
 }
 
-/* 🔲 FEATURES GRID */
+/*  FEATURES GRID */
 .features-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -32,7 +32,7 @@
   padding: 0 1rem;
 }
 
-/* 💡 FEATURE CARD */
+/*  FEATURE CARD */
 .feature-card {
   background: rgba(255, 255, 255, 0.08);
   border-radius: 15px;
@@ -48,7 +48,7 @@
   box-shadow: 0 10px 20px rgba(0, 255, 204, 0.25);
 }
 
-/* 🧩 ICON */
+/* ICON */
 .feature-icon {
   width: 90px;
   height: 90px;
@@ -60,7 +60,7 @@
   transform: scale(1.1);
 }
 
-/* 🔤 TEXT STYLING */
+/* TEXT STYLING */
 .feature-card h3 {
   font-size: 1.3rem;
   font-weight: 700;
@@ -74,7 +74,7 @@
   line-height: 1.6;
 }
 
-/* 📱 RESPONSIVE DESIGN */
+/* RESPONSIVE DESIGN */
 @media (max-width: 900px) {
   .features {
     padding: 4rem 1.5rem;

@@ -76,7 +76,7 @@
   box-shadow: 0 12px 30px rgba(0, 255, 195, 0.4);
 }
 
-/* ✅ Responsive Design */
+/* Responsive Design */
 @media (max-width: 900px) {
   .about-container {
     grid-template-columns: 1fr;
