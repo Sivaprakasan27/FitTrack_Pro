@@ -10,8 +10,11 @@ import WorkoutSummary from "./WorkoutSummary";
 import WorkoutPlanSlider from "./WorkoutPlanSlider";
 import WorkoutStats from "./WorkoutStats";
 import GoalTracker from "./GoalTracker";
+import { useNavigate } from "react-router-dom";
+
 
 const DieterDashboard = () => {
+  const navigate = useNavigate();
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [showWorkout, setShowWorkout] = useState(false);
   const [showProfile, setShowProfile] = useState(false);
@@ -20,9 +23,9 @@ const DieterDashboard = () => {
   const currentUser = JSON.parse(localStorage.getItem("currentUser"));
   const username = currentUser?.username || "Guest";
 
-  const handleLogout = () => {
+ const handleLogout = () => {
     localStorage.removeItem("currentUser");
-    window.location.href = "/login";
+    navigate("/login");
   };
 
   return (

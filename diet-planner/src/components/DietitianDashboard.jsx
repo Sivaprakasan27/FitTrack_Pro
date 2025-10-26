@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import "./DietitianDashboard.css";
+import { useNavigate } from "react-router-dom";
+
 import DietitianHeader from "./DietitianHeader";
 import DietitianClients from "./DietitianClients";
 import DietitianReports from "./DietitianReports";
@@ -20,6 +22,7 @@ import {
 } from "recharts";
 
 const DietitianDashboard = () => {
+  const navigate = useNavigate();
   const [username, setUsername] = useState("");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [showProfile, setShowProfile] = useState(false);
@@ -116,8 +119,8 @@ const DietitianDashboard = () => {
   };
 
   const handleLogout = () => {
-    localStorage.removeItem("currentUser");
-    window.location.href = "/login";
+  localStorage.removeItem("currentUser");
+  navigate("/login");
   };
 
   const handleNavigate = (tab) => setActiveTab(tab);
