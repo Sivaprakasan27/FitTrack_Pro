@@ -1,0 +1,95 @@
+
+
+.workout-card {
+  background: #ffffff;
+  border-radius: 16px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  overflow: hidden;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.workout-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+}
+
+.workout-day {
+  background: linear-gradient(90deg, #4caf50, #8bc34a);
+  color: white;
+  text-align: center;
+  padding: 10px 0;
+  font-weight: 600;
+}
+
+.workout-image img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.workout-details {
+  padding: 15px;
+}
+
+.workout-title {
+  font-size: 1.1rem;
+  color: #333;
+  margin-bottom: 8px;
+}
+
+.exercise-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.exercise-list li {
+  display: flex;
+  justify-content: space-between;
+  padding: 6px 0;
+  font-size: 0.95rem;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.exercise-list li:last-child {
+  border-bottom: none;
+}
+
+.exercise-name {
+  font-weight: 500;
+}
+
+.exercise-info {
+  color: #666;
+}
+
+.workout-footer {
+  padding: 15px;
+  background: #f8f9fa;
+  border-top: 1px solid #eee;
+}
+
+.progress-bar {
+  width: 100%;
+  height: 8px;
+  background: #ddd;
+  border-radius: 4px;
+  overflow: hidden;
+  margin: 8px 0;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #4caf50, #ffb300);
+  border-radius: 4px;
+  transition: width 0.4s ease;
+}
+
+.completion-text {
+  font-size: 0.9rem;
+  color: #555;
+  text-align: right;
+}

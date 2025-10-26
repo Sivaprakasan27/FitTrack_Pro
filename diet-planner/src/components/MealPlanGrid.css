@@ -1,0 +1,120 @@
+/* ===== Meal Plan Section ===== */
+.plan-title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #007bff;
+  margin: 1.5rem 0;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+/* ===== Grid Layout ===== */
+.mealplan-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+  padding: 1rem 2rem;
+}
+
+/* ===== Meal Cards ===== */
+.meal-card {
+  background: linear-gradient(145deg, #ffffff, #f0f8ff);
+  border: 1px solid #d9e9ff;
+  border-radius: 14px;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
+  padding: 1.2rem 1.5rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.meal-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 10px 22px rgba(0, 123, 255, 0.2);
+}
+
+/* ===== Day Title ===== */
+.meal-day {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #007bff;
+  margin-bottom: 0.6rem;
+  border-bottom: 2px solid #007bff;
+  padding-bottom: 0.3rem;
+  text-transform: capitalize;
+}
+
+/* ===== Meal List ===== */
+.meal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0.8rem 0;
+}
+
+.meal-list li {
+  margin: 0.4rem 0;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.meal-list strong {
+  color: #007bff;
+}
+
+/* ===== Nutrition Section ===== */
+.nutrition {
+  background: #eaf4ff;
+  border-radius: 10px;
+  padding: 0.6rem 0.8rem;
+  font-size: 0.85rem;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+  margin-top: 0.8rem;
+  color: #333;
+}
+
+.nutrition strong {
+  color: #0056b3;
+}
+
+/* ===== No Plan Card ===== */
+.no-plan.card {
+  background: linear-gradient(145deg, #ffffff, #f8fbff);
+  border: 1px solid #e0ecff;
+  border-radius: 14px;
+  text-align: center;
+  padding: 2rem;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  margin: 1.5rem auto;
+  width: 90%;
+  max-width: 450px;
+}
+
+.no-plan h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+}
+
+.no-plan p {
+  color: #444;
+  font-size: 0.95rem;
+}
+
+/* ===== Animations ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+  .mealplan-grid {
+    grid-template-columns: 1fr;
+    padding: 0.5rem 1rem;
+  }
+
+  .meal-card {
+    padding: 1rem;
+  }
+}

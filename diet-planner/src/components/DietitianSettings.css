@@ -1,0 +1,120 @@
+.settings-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 50;
+}
+
+.settings-modal {
+  background: #fff;
+  border-radius: 12px;
+  width: 420px;
+  padding: 2rem;
+  box-shadow: 0 6px 25px rgba(0, 0, 0, 0.15);
+  animation: fadeIn 0.3s ease;
+}
+
+.settings-modal h2 {
+  color: #007bff;
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.settings-section {
+  padding: 1rem 0;
+  border-bottom: 1px solid #eee;
+}
+
+.settings-section h4 {
+  color: #333;
+  margin-bottom: 0.5rem;
+}
+
+.settings-section p {
+  font-size: 0.9rem;
+  color: #444;
+}
+
+.settings-section input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  margin-bottom: 0.6rem;
+}
+
+/* Buttons */
+.btn-edit, .btn-save, .btn-export, .btn-close {
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-edit { background: #007bff; }
+.btn-edit:hover { background: #0056b3; }
+
+.btn-save { background: #00c49f; }
+.btn-save:hover { background: #00997b; }
+
+.btn-export { background: #00bcd4; }
+.btn-export:hover { background: #0097a7; }
+
+.btn-close { background: #ff5555; }
+.btn-close:hover { background: #e33e3e; }
+
+/* Switch */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 45px;
+  height: 22px;
+}
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+.slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #ccc;
+  transition: 0.4s;
+  border-radius: 22px;
+}
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 16px;
+  width: 16px;
+  left: 4px;
+  bottom: 3px;
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+input:checked + .slider {
+  background-color: #00bcd4;
+}
+input:checked + .slider:before {
+  transform: translateX(22px);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .settings-modal {
+    width: 90%;
+    padding: 1.2rem;
+  }
+}

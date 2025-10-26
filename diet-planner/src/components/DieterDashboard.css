@@ -1,0 +1,27 @@
+/* Layout container */
+.dieter-dashboard {
+  background: #f8fafc;
+  min-height: 100vh;
+  color: #222;
+  font-family: 'Poppins',sans-serif;
+  padding-bottom: 3rem;
+}
+/* Welcome Section*/
+.dieter-welcome{
+  text-align: center;
+}
+
+/* Card grid layout */
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+  padding: 20px 30px;
+}
+
+@media (max-width: 768px) {
+  .card-grid {
+    grid-template-columns: 1fr;
+    padding: 15px;
+  }
+}

@@ -1,0 +1,105 @@
+.dietitian-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0a192f;
+  color: #fff;
+  padding: 0.8rem 2rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.dietitian-logo {
+  font-size: 1.4rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #00e5ff;
+}
+
+.dietitian-nav ul {
+  display: flex;
+  list-style: none;
+  gap: 2rem;
+  margin: 0;
+}
+
+.dietitian-nav li {
+  cursor: pointer;
+  font-weight: 500;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.dietitian-nav li::after {
+  content: "";
+  position: absolute;
+  bottom: -6px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #00e5ff;
+  transition: width 0.3s ease;
+}
+
+.dietitian-nav li:hover {
+  color: #00e5ff;
+}
+
+.dietitian-nav li:hover::after,
+.dietitian-nav li.active::after {
+  width: 100%;
+}
+
+.dietitian-profile {
+  position: relative;
+}
+
+.dietitian-profile-btn {
+  background: transparent;
+  border: 2px solid #00e5ff;
+  color: #00e5ff;
+  padding: 0.4rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dietitian-profile-btn:hover {
+  background: rgba(0, 229, 255, 0.1);
+}
+
+.dietitian-dropdown {
+  display: none;
+  position: absolute;
+  right: 0;
+  top: 110%;
+  background: #112240;
+  border: 1px solid #00e5ff;
+  border-radius: 8px;
+  overflow: hidden;
+  min-width: 150px;
+  box-shadow: 0 4px 10px rgba(0, 229, 255, 0.2);
+}
+
+.dietitian-profile:hover .dietitian-dropdown {
+  display: block;
+}
+
+.dietitian-dropdown p {
+  margin: 0;
+  padding: 0.7rem 1rem;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+.dietitian-dropdown p:hover {
+  background: rgba(0, 229, 255, 0.1);
+}
+
+.logout {
+  color: #ff4d4d;
+}

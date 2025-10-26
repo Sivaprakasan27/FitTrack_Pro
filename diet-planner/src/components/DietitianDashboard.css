@@ -1,0 +1,98 @@
+.dietitian-dashboard {
+  background: #f5f8fc;
+  min-height: 100vh;
+  font-family: "Poppins", sans-serif;
+  color: #0a192f;
+}
+
+.dietitian-welcome {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: #e3f2fd;
+  color: #0a192f;
+  border-bottom: 2px solid #00e5ff;
+}
+
+.dashboard-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  text-align: center;
+}
+
+.dashboard-cards .card {
+  background: white;
+  padding: 1.8rem;
+  border-radius: 15px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s ease;
+  border-left: 6px solid #00e5ff;
+}
+
+.dashboard-cards .card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 20px rgba(0, 229, 255, 0.3);
+}
+
+.dashboard-cards h3 {
+  color: #007bff;
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.dashboard-cards p {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #0a192f;
+  animation: countUp 1s ease-in-out;
+}
+
+@keyframes countUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.dietitian-insights {
+  margin: 2rem;
+  padding: 2rem;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.dietitian-insights h2 {
+  color: #007bff;
+}
+
+.chart-section {
+  margin-top: 2rem;
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.chart-section h4 {
+  margin-bottom: 1rem;
+  color: #007bff;
+  text-align: center;
+}
+
+@media (max-width: 768px) {
+  .chart-section {
+    padding: 1rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-cards {
+    grid-template-columns: 1fr;
+  }
+}

@@ -1,0 +1,141 @@
+/* 🌈 Navbar Base */
+.header {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  background: linear-gradient(90deg, #003366, #007bff);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* 🧭 Navbar Layout */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding: 0.8rem 2rem;
+  flex-wrap: wrap;
+}
+
+.logo {
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.5px;
+}
+
+/* 🌐 Nav Links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.nav-links li button {
+  background: none;
+  border: none;
+  color: #ffffff;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav-links li button:hover {
+  color: #00ffc3;
+  transform: translateY(-2px);
+}
+
+/* 🔘 Buttons */
+.nav-butt {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.btn-out {
+  background: transparent;
+  border: 2px solid #00ffc3;
+  color: #00ffc3;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-out:hover {
+  background: #00ffc3;
+  color: #003366;
+}
+
+.btn-reg {
+  background: #00ffc3;
+  color: #003366;
+  padding: 0.45rem 1rem;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: 0.3s ease;
+}
+
+.btn-reg:hover {
+  background: #19e0a5;
+}
+
+/* 📱 Responsive Fix (No Hamburger) */
+@media (max-width: 850px) {
+  .navbar {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 1rem;
+  }
+
+  .logo {
+    margin-bottom: 0.6rem;
+    text-align: center;
+  }
+
+  .nav-links {
+    width: 100%;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .nav-butt {
+    margin-top: 0.8rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .btn-out,
+  .btn-reg {
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+}
+
+/* ✨ Small Device Fine-tune */
+@media (max-width: 480px) {
+  .navbar {
+    padding: 0.7rem 1rem;
+  }
+
+  .logo {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    gap: 0.7rem;
+  }
+
+  .btn-out,
+  .btn-reg {
+    font-size: 0.85rem;
+    padding: 0.35rem 0.7rem;
+  }
+}

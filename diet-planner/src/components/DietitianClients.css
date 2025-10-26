@@ -1,0 +1,253 @@
+/* Main Section */
+.clients-section {
+  padding: 2rem;
+  background: #f8fafc;
+  min-height: 80vh;
+}
+
+.clients-section h2 {
+  font-size: 1.8rem;
+  color: #222;
+  margin-bottom: 1rem;
+}
+
+/* Grid Layout */
+.clients-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Cards */
+.client-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s;
+}
+
+.client-card:hover {
+  transform: translateY(-5px);
+}
+
+.client-header h3 {
+  color: #007bff;
+  margin-bottom: 0.2rem;
+}
+
+.client-body p {
+  font-size: 0.9rem;
+  margin: 0.3rem 0;
+  color: #333;
+}
+
+.client-footer {
+  margin-top: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  gap: 0.5rem;
+}
+
+/* Buttons */
+.btn-view, .btn-report, .btn-delete {
+  flex: 1;
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-view { background: #007bff; }
+.btn-report { background: #00c49f; }
+.btn-delete { background: #ff5555; }
+
+.btn-view:hover { background: #0056b3; }
+.btn-report:hover { background: #009c87; }
+.btn-delete:hover { background: #e33e3e; }
+
+/* Modal */
+.client-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.client-modal {
+  background: white;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 400px;
+  animation: fadeIn 0.3s ease;
+}
+
+.client-details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.8rem;
+  margin-top: 1rem;
+}
+
+.client-details input {
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+}
+
+.btn-row {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.8rem;
+}
+
+.btn-edit, .btn-save, .btn-close {
+  border: none;
+  border-radius: 6px;
+  padding: 0.6rem 1rem;
+  color: white;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-edit { background: #007bff; }
+.btn-save { background: #00c49f; }
+.btn-close { background: #ff5555; }
+
+.btn-edit:hover { background: #0056b3; }
+.btn-save:hover { background: #00997b; }
+.btn-close:hover { background: #e33e3e; }
+
+
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 600px) {
+  .client-modal { width: 90%; padding: 1.2rem; }
+}
+
+
+
+.clients-container {
+  padding: 2rem;
+  color: #333;
+}
+
+.clients-container h2 {
+  color: #0b7285;
+  margin-bottom: 0.5rem;
+}
+
+.clients-list {
+  margin-top: 1rem;
+}
+
+.client-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  margin-bottom: 1rem;
+  padding: 1rem;
+  transition: all 0.3s ease;
+}
+
+.client-card:hover {
+  transform: translateY(-2px);
+}
+
+.client-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.client-actions button {
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 0.8rem;
+  margin-left: 0.5rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.client-actions .delete-btn {
+  background: #e03131;
+}
+
+.client-actions button:hover {
+  opacity: 0.8;
+}
+
+.client-details {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #ddd;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.client-details input {
+  display: block;
+  width: 100%;
+  margin: 0.4rem 0;
+  padding: 0.5rem;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.btn-row {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.8rem;
+}
+
+.save-btn {
+  background: #2b8a3e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  margin-right: 0.5rem;
+}
+
+.cancel-btn {
+  background: #868e96;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+}
+
+.edit-btn {
+  background: #0b7285;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  padding: 0.5rem 1rem;
+  margin-top: 1rem;
+  cursor: pointer;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

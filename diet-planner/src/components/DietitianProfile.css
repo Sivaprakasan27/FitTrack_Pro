@@ -1,0 +1,54 @@
+.profile-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.profile-modal {
+  background: #fff;
+  border-radius: 12px;
+  padding: 2rem;
+  width: 350px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  animation: fadeIn 0.3s ease;
+}
+
+.profile-modal h2 {
+  color: #007bff;
+  margin-bottom: 1rem;
+}
+
+.profile-details p {
+  margin: 0.6rem 0;
+  color: #333;
+  font-size: 1rem;
+}
+
+.btn-row {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-close {
+  background: #ff5555;
+  border: none;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-close:hover {
+  background: #e23e3e;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}

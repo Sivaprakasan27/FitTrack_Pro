@@ -1,0 +1,89 @@
+.feedback-section {
+  padding: 2rem;
+  background: #f9fafb;
+  min-height: 80vh;
+}
+
+.feedback-section h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.2rem;
+  color: #111;
+}
+
+/* Grid */
+.feedback-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.2rem;
+}
+
+/* Cards */
+.feedback-card {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.2rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: 0.3s ease;
+}
+
+.feedback-card:hover {
+  transform: translateY(-4px);
+}
+
+.feedback-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.6rem;
+}
+
+.feedback-header h3 {
+  color: #007bff;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.feedback-date {
+  color: #777;
+  font-size: 0.8rem;
+}
+
+.feedback-message {
+  font-size: 0.95rem;
+  color: #333;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+}
+
+.feedback-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.btn-delete {
+  background: #ff5555;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.3s;
+}
+
+.btn-delete:hover {
+  background: #e23e3e;
+}
+
+.no-feedback {
+  color: #666;
+  font-style: italic;
+  text-align: center;
+  margin-top: 2rem;
+}
+
+@media (max-width: 600px) {
+  .feedback-section {
+    padding: 1rem;
+  }
+}

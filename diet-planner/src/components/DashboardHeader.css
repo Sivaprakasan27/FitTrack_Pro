@@ -1,0 +1,99 @@
+/*  Header Container */
+.dashboard-header {
+  background: linear-gradient(90deg, #007bff, #00c49f);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  border-bottom-left-radius: 12px;
+  border-bottom-right-radius: 12px;
+}
+
+/* Title */
+.dash-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: 0.5px;
+}
+
+/* Navigation */
+.dashboard-nav ul {
+  display: flex;
+  gap: 1.8rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dashboard-nav li {
+  cursor: pointer;
+  font-weight: 500;
+  font-size: 1rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.dashboard-nav li:hover {
+  color: #ffeb3b;
+}
+
+.dashboard-nav .logout {
+  color: #ffdddd;
+}
+
+.dashboard-nav .logout:hover {
+  color: #ff4b4b;
+}
+
+/* Glow Effect Under Nav */
+.nav-glow {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: #ffeb3b;
+  transition: width 0.3s ease;
+}
+
+.dashboard-nav li:hover ~ .nav-glow {
+  width: 100%;
+}
+
+/* Username Text */
+.username-text {
+  font-size: 1rem;
+  font-weight: 500;
+  background: rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 1rem;
+  border-radius: 20px;
+  color: #fff;
+  letter-spacing: 0.5px;
+  box-shadow: 0 0 8px rgba(255, 255, 255, 0.2);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .dashboard-header {
+    flex-direction: column;
+    gap: 0.8rem;
+    text-align: center;
+  }
+
+  .dashboard-nav ul {
+    gap: 1rem;
+  }
+
+  .username-text {
+    font-size: 0.9rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
