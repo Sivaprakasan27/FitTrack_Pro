@@ -1,17 +1,1 @@
-/* Reset & Base */
-html{
-  scroll-behavior: smooth;
-}
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: linear-gradient(to right, #e9fce9, #f0faff);
-  color: #333;
-  line-height: 1.6;
-}
 
