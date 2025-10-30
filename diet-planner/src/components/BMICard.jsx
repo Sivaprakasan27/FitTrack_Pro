@@ -20,11 +20,11 @@ const BMICard = ({ onCategorySelect }) => {
 
     setCategory(bmiCategory);
 
-    // Save to localStorage
+    // Save in localStorage
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser) {
       const users = JSON.parse(localStorage.getItem("users")) || [];
-      const updated = users.map(u =>
+      const updated = users.map((u) =>
         u.username === currentUser.username
           ? { ...u, bmi: result, bmiCategory }
           : u
@@ -36,34 +36,45 @@ const BMICard = ({ onCategorySelect }) => {
       );
     }
 
-    // Notify parent
     onCategorySelect(bmiCategory, true);
   };
 
   return (
-    <div className="card bmi-card">
-      <h3>My BMI</h3>
-      <input
-        type="number"
-        placeholder="Height (cm)"
-        value={height}
-        onChange={e => setHeight(e.target.value)}
-      />
-      <input
-        type="number"
-        placeholder="Weight (kg)"
-        value={weight}
-        onChange={e => setWeight(e.target.value)}
-      />
-      <button className="btn-primary" onClick={calculateBMI}>
-        Calculate
+    <div className="bmi-card">
+      <h3>📊 Calculate Your BMI</h3>
+      <p className="bmi-sub">Know your body status and get personalized plans</p>
+
+      <div className="bmi-inputs">
+        <input
+          type="number"
+          placeholder="Height (cm)"
+          value={height}
+          min={0}
+          onChange={(e) => setHeight(e.target.value)}
+        />
+        <input
+          type="number"
+          placeholder="Weight (kg)"
+          value={weight}
+          min={0}
+          onChange={(e) => setWeight(e.target.value)}
+        />
+      </div>
+
+      <button className="bmi-btn" onClick={calculateBMI}>
+        Calculate BMI
       </button>
 
       {bmi && (
         <div className="bmi-result">
-          <p>Your BMI: <strong>{bmi}</strong></p>
-          <p>Category: <strong>{category}</strong></p>
-         
+          <div className="bmi-value">
+            <h2>{bmi}</h2>
+            <p>BMI Value</p>
+          </div>
+          <div className={`bmi-category ${category.toLowerCase()}`}>
+            <p>Category:</p>
+            <h4>{category}</h4>
+          </div>
         </div>
       )}
     </div>

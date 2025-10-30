@@ -1,4 +1,3 @@
-
 import React, { useState } from "react";
 import "./DietitianHeader.css";
 
@@ -6,7 +5,6 @@ const DietitianHeader = ({
   username,
   onLogout,
   onViewProfile,
-  onViewSettings,
   onNavigate,
 }) => {
   const [activeTab, setActiveTab] = useState("dashboard");
@@ -33,24 +31,37 @@ const DietitianHeader = ({
           >
             Dashboard
           </li>
+
           <li
             className={activeTab === "clients" ? "active" : ""}
             onClick={() => handleTabClick("clients")}
           >
             Clients
           </li>
+
           <li
             className={activeTab === "reports" ? "active" : ""}
             onClick={() => handleTabClick("reports")}
           >
             Reports
           </li>
+
           <li
             className={activeTab === "feedback" ? "active" : ""}
             onClick={() => handleTabClick("feedback")}
           >
             Feedback
           </li>
+
+          
+        <li
+  className={activeTab === "contacts" ? "active" : ""}
+  onClick={() => handleTabClick("contacts")}
+>
+  Contacts
+</li>
+
+
         </ul>
       </nav>
 
@@ -65,7 +76,6 @@ const DietitianHeader = ({
         {dropdownOpen && (
           <div className="dietitian-dropdown">
             <p onClick={onViewProfile}>Profile</p>
-            <p onClick={onViewSettings}>Settings</p>
             <p className="logout" onClick={onLogout}>
               Logout
             </p>

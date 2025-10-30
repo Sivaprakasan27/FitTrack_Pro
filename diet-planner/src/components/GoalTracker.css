@@ -1,162 +1,153 @@
-/* ===== Goal Tracker Container ===== */
-.goal-tracker {
-  background: linear-gradient(145deg, #ffffff, #f2f7ff);
-  border: 1px solid #e0e9ff;
-  border-radius: 14px;
-  box-shadow: 0 5px 18px rgba(0, 123, 255, 0.1);
-  padding: 1.5rem 1.8rem;
-  margin-top: 1.5rem;
-  animation: fadeIn 0.4s ease-in-out;
-}
-
-.goal-tracker h3 {
-  font-size: 1.5rem;
-  color: #007bff;
-  margin-bottom: 1rem;
+.goal-card {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 18px;
+  padding: 1.5rem;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
   text-align: center;
-  font-weight: 700;
 }
 
-/* ===== Input Fields ===== */
+.goal-card:hover {
+  transform: translateY(-5px);
+}
+
+.goal-card h3 {
+  color: #0096c7;
+}
+
+.goal-sub {
+  color: #666;
+  font-size: 0.9rem;
+  margin-bottom: 1rem;
+}
+
+/* Inputs */
 .goal-inputs {
   display: flex;
+  justify-content: center;
   gap: 0.8rem;
-  justify-content: space-between;
   flex-wrap: wrap;
-  margin-bottom: 1rem;
 }
 
 .goal-inputs input {
-  flex: 1;
-  padding: 0.7rem;
-  border: 1px solid #ccd9ff;
-  border-radius: 8px;
-  font-size: 0.95rem;
+  padding: 0.7rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  width: 45%;
+  min-width: 120px;
   transition: 0.3s;
 }
 
 .goal-inputs input:focus {
   outline: none;
-  border-color: #007bff;
-  box-shadow: 0 0 5px rgba(0, 123, 255, 0.3);
+  border-color: #0096c7;
+  box-shadow: 0 0 5px rgba(0, 150, 199, 0.4);
 }
 
-/* ===== Mode Buttons ===== */
+/* Mode buttons */
 .goal-modes {
+  margin: 1rem 0;
   display: flex;
   justify-content: center;
   gap: 1rem;
-  margin-bottom: 1.2rem;
+  flex-wrap: wrap;
 }
 
 .mode-btn {
-  border: 1px solid #cfe3ff;
-  background: #f7fbff;
-  border-radius: 8px;
-  padding: 0.6rem 1.2rem;
-  cursor: pointer;
-  font-size: 0.95rem;
-  transition: all 0.3s ease;
-  color: #333;
-}
-
-.mode-btn:hover {
-  background: #e8f2ff;
-  transform: translateY(-2px);
-}
-
-.active-loss {
-  background: #ffe9e9;
-  border-color: #ff6b6b;
-  color: #b00000;
-  font-weight: 600;
-}
-
-.active-gain {
-  background: #e9fff1;
-  border-color: #00c76f;
-  color: #00753b;
-  font-weight: 600;
-}
-
-/* ===== Progress Overview ===== */
-.progress-overview {
-  background: #f8faff;
-  border: 1px solid #e1ebff;
+  border: none;
   border-radius: 10px;
-  padding: 1rem;
-  margin-bottom: 1.2rem;
-}
-
-.progress-overview h4 {
-  font-size: 1.1rem;
-  color: #007bff;
-  margin-bottom: 0.6rem;
-}
-
-.progress-overview p {
-  font-size: 0.95rem;
-  color: #333;
-  margin: 0.3rem 0;
-}
-
-.milestone-text {
-  background: #e7f4ff;
-  color: #007bff;
-  padding: 0.7rem;
-  border-radius: 8px;
-  text-align: center;
+  padding: 0.6rem 1.2rem;
   font-weight: 500;
-  margin-bottom: 1rem;
+  cursor: pointer;
+  background: #eee;
+  transition: 0.3s;
 }
 
-/* ===== Daily Log Section ===== */
-.daily-log h4 {
-  color: #007bff;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
+.mode-btn.active-loss {
+  background: #f94144;
+  color: white;
+}
+
+.mode-btn.active-gain {
+  background: #43aa8b;
+  color: white;
+}
+
+/* Progress */
+.progress-section {
+  margin-top: 1rem;
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.9rem;
+  color: #333;
+}
+
+.progress-bar {
+  height: 10px;
+  background: #e8e8e8;
+  border-radius: 5px;
+  margin: 0.6rem 0;
+  overflow: hidden;
+}
+
+.progress-fill {
+  background: linear-gradient(90deg, #00b4d8, #90e0ef);
+  height: 100%;
+  width: 0;
+  transition: width 0.4s ease-in-out;
+  border-radius: 5px;
+}
+
+.progress-text {
+  font-size: 0.9rem;
+  color: #333;
+  margin-bottom: 0.4rem;
+}
+
+.goal-message {
+  font-weight: 600;
+  color: #0077b6;
+  font-size: 0.95rem;
+}
+
+/* Log */
+.log-section {
+  margin-top: 1.5rem;
 }
 
 .log-inputs {
   display: flex;
+  justify-content: center;
   gap: 0.6rem;
+  flex-wrap: wrap;
 }
 
 .log-inputs input {
-  flex: 1;
-  padding: 0.6rem;
-  border: 1px solid #d6e4ff;
+  padding: 0.6rem 1rem;
+  border: 1px solid #ccc;
   border-radius: 8px;
-  transition: 0.3s;
 }
 
-.log-inputs input:focus {
-  outline: none;
-  border-color: #007bff;
-}
-
-.btn-log {
-  background: #007bff;
-  color: #fff;
+.log-btn {
+  background: #0077b6;
+  color: white;
   border: none;
-  border-radius: 8px;
   padding: 0.6rem 1.2rem;
+  border-radius: 8px;
   cursor: pointer;
-  transition: 0.3s;
 }
 
-.btn-log:hover {
-  background: #0056b3;
+.log-btn:hover {
+  background: #0096c7;
 }
 
-/* ===== Log History ===== */
+/* History */
 .log-history {
-  margin-top: 1.2rem;
-}
-
-.log-history h4 {
-  color: #007bff;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  text-align: left;
 }
 
 .log-history ul {
@@ -165,57 +156,47 @@
 }
 
 .log-history li {
-  background: #f3f7ff;
-  border-radius: 6px;
-  padding: 0.5rem 0.8rem;
-  margin-bottom: 0.4rem;
+  padding: 0.3rem 0;
   font-size: 0.9rem;
-  color: #333;
+  border-bottom: 1px solid #f1f1f1;
 }
 
-/* ===== Reset Button ===== */
-.reset-section {
-  text-align: center;
-  margin-top: 1.5rem;
-}
-
-.btn-reset {
-  background: #ff5555;
+/* Reset */
+.reset-btn {
+  margin-top: 1rem;
+  background: #ef476f;
   color: white;
   border: none;
-  border-radius: 8px;
   padding: 0.7rem 1.5rem;
-  font-size: 0.95rem;
+  border-radius: 10px;
   cursor: pointer;
   transition: 0.3s;
 }
 
-.btn-reset:hover {
-  background: #d63a3a;
+.reset-btn:hover {
+  background: #d62839;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-/* ===== Responsive Design ===== */
+/* ===== Responsive ===== */
 @media (max-width: 768px) {
-  .goal-inputs {
-    flex-direction: column;
+  .goal-inputs input {
+    width: 100%;
   }
 
   .goal-modes {
     flex-direction: column;
-    gap: 0.6rem;
+  }
+
+  .progress-header {
+    flex-direction: column;
+    align-items: center;
   }
 
   .log-inputs {
     flex-direction: column;
   }
 
-  .btn-log {
+  .log-btn {
     width: 100%;
   }
 }

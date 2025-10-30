@@ -5,42 +5,35 @@ const GoalTracker = () => {
   const [goal, setGoal] = useState({
     startWeight: "",
     targetWeight: "",
-    duration: "",
     mode: "",
   });
-
   const [dailyLogs, setDailyLogs] = useState([]);
   const [todayWeight, setTodayWeight] = useState("");
   const [currentWeight, setCurrentWeight] = useState("");
-  const [milestoneMessage, setMilestoneMessage] = useState("");
-  const [progressPercent, setProgressPercent] = useState(0);
-  const [remainingWeight, setRemainingWeight] = useState(0);
+  const [progress, setProgress] = useState(0);
+  const [remaining, setRemaining] = useState(0);
+  const [message, setMessage] = useState("");
 
-  const loadGoalData = () => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    if (currentUser?.goal) {
-      setGoal(currentUser.goal);
-      setDailyLogs(currentUser.goal.dailyLogs || []);
-      if (currentUser.goal.dailyLogs?.length > 0) {
-        const latest =
-          currentUser.goal.dailyLogs[currentUser.goal.dailyLogs.length - 1]
-            .weight;
-        setCurrentWeight(latest);
-      } else {
-        setCurrentWeight(currentUser.goal.startWeight);
-      }
+  const loadGoal = () => {
+    const user = JSON.parse(localStorage.getItem("currentUser"));
+    if (user?.goal) {
+      const g = user.goal;
+      setGoal(g);
+      setDailyLogs(g.dailyLogs || []);
+      if (g.dailyLogs?.length > 0)
+        setCurrentWeight(g.dailyLogs[g.dailyLogs.length - 1].weight);
     }
   };
 
   useEffect(() => {
-    loadGoalData();
-    window.addEventListener("goalUpdated", loadGoalData);
-    return () => window.removeEventListener("goalUpdated", loadGoalData);
+    loadGoal();
+    window.addEventListener("goalUpdated", loadGoal);
+    return () => window.removeEventListener("goalUpdated", loadGoal);
   }, []);
 
-  const handleModeSelect = (mode) => setGoal({ ...goal, mode });
+  const handleMode = (m) => setGoal({ ...goal, mode: m });
 
-  const handleLogWeight = () => {
+  const handleLog = () => {
     if (!todayWeight) return;
     const date = new Date().toLocaleDateString();
     const newWeight = parseFloat(todayWeight);
@@ -54,38 +47,29 @@ const GoalTracker = () => {
       ...currentUser,
       goal: { ...goal, dailyLogs: updatedLogs },
     };
-
     localStorage.setItem("currentUser", JSON.stringify(updatedUser));
 
     const users = JSON.parse(localStorage.getItem("users")) || [];
-    const updatedUsers = users.map((u) =>
-      u.username === currentUser.username ? updatedUser : u
+    localStorage.setItem(
+      "users",
+      JSON.stringify(users.map((u) =>
+        u.username === currentUser.username ? updatedUser : u
+      ))
     );
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
 
     setDailyLogs(updatedLogs);
     setCurrentWeight(newWeight);
     setTodayWeight("");
   };
 
-  const handleResetGoal = () => {
-    const currentUser = JSON.parse(localStorage.getItem("currentUser"));
-    const updatedUser = { ...currentUser, goal: null };
-    localStorage.setItem("currentUser", JSON.stringify(updatedUser));
-
-    const users = JSON.parse(localStorage.getItem("users")) || [];
-    const updatedUsers = users.map((u) =>
-      u.username === currentUser.username ? updatedUser : u
-    );
-    localStorage.setItem("users", JSON.stringify(updatedUsers));
-
-    setGoal({ startWeight: "", targetWeight: "", duration: "", mode: "" });
+  const resetGoal = () => {
+    setGoal({ startWeight: "", targetWeight: "", mode: "" });
     setDailyLogs([]);
     setTodayWeight("");
     setCurrentWeight("");
-    setMilestoneMessage("");
-    setProgressPercent(0);
-    setRemainingWeight(0);
+    setProgress(0);
+    setRemaining(0);
+    setMessage("");
   };
 
   useEffect(() => {
@@ -94,37 +78,37 @@ const GoalTracker = () => {
     const start = parseFloat(goal.startWeight);
     const target = parseFloat(goal.targetWeight);
     const current = parseFloat(currentWeight);
-    let progress = 0;
-    let remaining = 0;
+
+    let p = 0;
+    let r = 0;
 
     if (goal.mode === "loss") {
-      progress = ((start - current) / (start - target)) * 100;
-      remaining = Math.max(0, current - target);
+      p = ((start - current) / (start - target)) * 100;
+      r = current - target;
     } else if (goal.mode === "gain") {
-      progress = ((current - start) / (target - start)) * 100;
-      remaining = Math.max(0, target - current);
+      p = ((current - start) / (target - start)) * 100;
+      r = target - current;
     }
 
-    progress = Math.max(0, Math.min(progress, 100));
-    setProgressPercent(progress.toFixed(1));
-    setRemainingWeight(remaining.toFixed(1));
+    p = Math.max(0, Math.min(p, 100));
+    r = Math.max(0, r);
 
-    if (progress >= 100) {
-      setMilestoneMessage("🎉 Congratulations! You’ve achieved your goal!");
-    } else if (progress >= 75) {
-      setMilestoneMessage("🔥 Almost there — 75% of your goal reached!");
-    } else if (progress >= 50) {
-      setMilestoneMessage("💪 Halfway there! Keep going strong!");
-    } else if (progress >= 25) {
-      setMilestoneMessage("⚡ Great start! Stay consistent!");
-    } else {
-      setMilestoneMessage("");
-    }
-  }, [currentWeight, goal]);
+    setProgress(p.toFixed(1));
+    setRemaining(r.toFixed(1));
+
+    if (p >= 100) setMessage("🎉 Goal achieved! Incredible work!");
+    else if (p >= 75) setMessage("🔥 Almost there — 75% done!");
+    else if (p >= 50) setMessage("💪 Halfway there — keep pushing!");
+    else if (p >= 25) setMessage("⚡ Great start — stay consistent!");
+    else setMessage("");
+  }, [goal, currentWeight]);
 
   return (
-    <div className="goal-tracker card">
+    <div className="goal-card">
       <h3>🎯 Goal Tracker</h3>
+      <p className="goal-sub">
+        Set your goal and track your progress every day.
+      </p>
 
       <div className="goal-inputs">
         <input
@@ -144,45 +128,48 @@ const GoalTracker = () => {
       <div className="goal-modes">
         <button
           className={`mode-btn ${goal.mode === "loss" ? "active-loss" : ""}`}
-          onClick={() => handleModeSelect("loss")}
+          onClick={() => handleMode("loss")}
         >
           🧘 Weight Loss
         </button>
         <button
           className={`mode-btn ${goal.mode === "gain" ? "active-gain" : ""}`}
-          onClick={() => handleModeSelect("gain")}
+          onClick={() => handleMode("gain")}
         >
           🏋️ Weight Gain
         </button>
       </div>
 
-      <div className="progress-overview">
-        <h4>📊 Current Progress</h4>
-        <p><strong>Starting Weight:</strong> {goal.startWeight || 0} kg</p>
-        <p><strong>Current Weight:</strong> {currentWeight || 0} kg</p>
-        <p><strong>Target Weight:</strong> {goal.targetWeight || 0} kg</p>
-        <p><strong>Remaining:</strong> {remainingWeight} kg</p>
-        <div className="progress-bar">
-          <div
-            className="progress-fill"
-            style={{ width: `${progressPercent}%` }}
-          ></div>
+      {goal.startWeight && goal.targetWeight && (
+        <div className="progress-section">
+          <div className="progress-header">
+            <p>
+              <strong>Current:</strong> {currentWeight || 0} kg
+            </p>
+            <p>
+              <strong>Remaining:</strong> {remaining} kg
+            </p>
+          </div>
+          <div className="progress-bar">
+            <div className="progress-fill" style={{ width: `${progress}%` }}></div>
+          </div>
+          <p className="progress-text">Progress — {progress}%</p>
+          {message && <p className="goal-message">{message}</p>}
         </div>
-        <p className="progress-percent">Progress: {progressPercent}%</p>
-      </div>
+      )}
 
-      {milestoneMessage && <p className="milestone-text">{milestoneMessage}</p>}
-
-      <div className="daily-log">
-        <h4>📅 Log Today’s Weight</h4>
+      <div className="log-section">
+        <h4>📅 Log Today's Weight</h4>
         <div className="log-inputs">
           <input
             type="number"
-            placeholder="Enter today's weight"
+            placeholder="Today's weight"
             value={todayWeight}
             onChange={(e) => setTodayWeight(e.target.value)}
           />
-          <button className="btn-log" onClick={handleLogWeight}>Log</button>
+          <button onClick={handleLog} className="log-btn">
+            Log
+          </button>
         </div>
       </div>
 
@@ -190,7 +177,7 @@ const GoalTracker = () => {
         <div className="log-history">
           <h4>📋 Recent Logs</h4>
           <ul>
-            {dailyLogs.slice(-5).reverse().map((log, i) => (
+            {dailyLogs.slice(-4).reverse().map((log, i) => (
               <li key={i}>
                 {log.date}: <strong>{log.weight} kg</strong>
               </li>
@@ -199,11 +186,9 @@ const GoalTracker = () => {
         </div>
       )}
 
-      <div className="reset-section">
-        <button className="btn-reset" onClick={handleResetGoal}>
-          🔄 Reset Goal
-        </button>
-      </div>
+      <button className="reset-btn" onClick={resetGoal}>
+        🔄 Reset Goal
+      </button>
     </div>
   );
 };

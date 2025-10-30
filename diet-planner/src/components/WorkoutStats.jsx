@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import "./WorkoutStats.css";
 
@@ -47,23 +46,32 @@ const WorkoutStats = () => {
   }, []);
 
   return (
-    <div className="workout-stats card">
-      <h2>📈 Weekly Stats</h2>
+    <div className="workout-stats-card">
+      <h3>📈 Weekly Workout Insights</h3>
+      <p className="stats-sub">Track your overall performance and habits.</p>
+
       <div className="stats-grid">
         <div className="stat-item">
           <h4>Total Calories Burned</h4>
           <p className="highlight">{stats.totalCalories} kcal</p>
         </div>
+
         <div className="stat-item">
           <h4>Average Completion</h4>
-          <p className="highlight">{stats.avgCompletion}%</p>
+          <div className="circle">
+            <span>{stats.avgCompletion}%</span>
+          </div>
         </div>
+
         <div className="stat-item">
           <h4>Most Active Day</h4>
-          <p className="highlight">{stats.activeDay} 🟢</p>
+          <p className="highlight">
+            {stats.activeDay} <span>🏋️</span>
+          </p>
         </div>
-        <div className="stat-item">
-          <h4>Consistency</h4>
+
+        <div className="stat-item consistency">
+          <h4>Consistency Level</h4>
           <div className="stars">
             {[...Array(5)].map((_, i) => (
               <span

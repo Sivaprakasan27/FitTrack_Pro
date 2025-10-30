@@ -68,43 +68,60 @@ const Register = () => {
     <div className="auth-container">
       <h2>Register</h2>
       <form onSubmit={handleSubmit} className="auth-form">
+        
+        <label htmlFor="name">Full Name</label>
         <input
+          id="name"
           type="text"
           name="name"
-          placeholder="Full Name"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Email"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="text"
-          name="username"
-          placeholder="Username"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="password"
-          placeholder="Password"
-          onChange={handleChange}
-          required
-        />
-        <input
-          type="password"
-          name="confirmPassword"
-          placeholder="Confirm Password"
+          placeholder="Enter your full name"
           onChange={handleChange}
           required
         />
 
+        <label htmlFor="email">Email Address</label>
+        <input
+          id="email"
+          type="email"
+          name="email"
+          placeholder="Enter your email"
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="username">Username</label>
+        <input
+          id="username"
+          type="text"
+          name="username"
+          placeholder="Choose a username"
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="password">Password</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          placeholder="Enter password"
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="confirmPassword">Confirm Password</label>
+        <input
+          id="confirmPassword"
+          type="password"
+          name="confirmPassword"
+          placeholder="Re-enter password"
+          onChange={handleChange}
+          required
+        />
+
+        <label htmlFor="role">Select Role</label>
         <select
+          id="role"
           name="role"
           value={formData.role}
           onChange={handleChange}
@@ -115,30 +132,40 @@ const Register = () => {
           <option value="Dietitian">Dietitian</option>
         </select>
 
-        
         {formData.role === "Dieter" && (
           <>
+            <label htmlFor="age">Age</label>
             <input
+              id="age"
               type="number"
               name="age"
-              placeholder="Age"
+              placeholder="Enter your age"
               value={formData.age}
+              min={0}
               onChange={handleChange}
               required
             />
+
+            <label htmlFor="height">Height (cm)</label>
             <input
+              id="height"
               type="number"
               name="height"
-              placeholder="Height (cm)"
+              placeholder="Enter height in cm"
               value={formData.height}
+              min={0}
               onChange={handleChange}
               required
             />
+
+            <label htmlFor="weight">Weight (kg)</label>
             <input
+              id="weight"
               type="number"
               name="weight"
-              placeholder="Weight (kg)"
+              placeholder="Enter weight in kg"
               value={formData.weight}
+              min={0}
               onChange={handleChange}
               required
             />

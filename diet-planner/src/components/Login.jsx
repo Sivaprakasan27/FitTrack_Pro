@@ -41,6 +41,7 @@ const Login = () => {
     <div className="auth-container">
       <h2>Login</h2>
       <form onSubmit={handleSubmit} className="auth-form">
+        <label htmlFor="username">Username</label>
         <input
           type="text"
           name="username"
@@ -48,6 +49,8 @@ const Login = () => {
           onChange={handleChange}
           required
         />
+
+        <label htmlFor="password">Password</label>
         <input
           type="password"
           name="password"

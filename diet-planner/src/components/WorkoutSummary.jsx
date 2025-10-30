@@ -11,21 +11,20 @@ const WorkoutSummary = () => {
 
   const calculateSummary = () => {
     const progressData = JSON.parse(localStorage.getItem("workoutProgress")) || {};
-    const today = new Date().toLocaleDateString();
     let totalCalories = 0;
     let completed = 0;
-    let totalDays = Object.keys(progressData).length;
+    const totalDays = Object.keys(progressData).length;
 
     Object.values(progressData).forEach((entry) => {
       if (entry.completion === 100) {
         completed++;
-        totalCalories += entry.calories;
+        totalCalories += entry.calories || 0;
       }
     });
 
     setSummary({
       calories: totalCalories,
-      duration: completed * 30, // assume each workout ≈ 30 min
+      duration: completed * 30,
       completion: totalDays ? Math.round((completed / totalDays) * 100) : 0,
       lastActive: new Date().toLocaleString(),
     });
@@ -38,17 +37,23 @@ const WorkoutSummary = () => {
   }, []);
 
   return (
-    <div className="workout-summary card">
-      <h2>🔥 Today's Summary</h2>
+    <div className="workout-summary-card">
+      <h3>🔥 Workout Summary</h3>
+      <p className="summary-sub">
+        Your daily workout snapshot — stay on track and crush your goals!
+      </p>
+
       <div className="summary-grid">
         <div className="summary-item">
           <h4>Calories Burned</h4>
           <p className="highlight">{summary.calories} kcal</p>
         </div>
+
         <div className="summary-item">
-          <h4>Workout Duration</h4>
-          <p className="highlight">{summary.duration} min</p>
+          <h4>Total Duration</h4>
+          <p className="highlight">{summary.duration} mins</p>
         </div>
+
         <div className="summary-item">
           <h4>Completion</h4>
           <div className="progress-bar">
@@ -59,6 +64,7 @@ const WorkoutSummary = () => {
           </div>
           <p className="highlight">{summary.completion}%</p>
         </div>
+
         <div className="summary-item">
           <h4>Last Active</h4>
           <p className="highlight">{summary.lastActive}</p>

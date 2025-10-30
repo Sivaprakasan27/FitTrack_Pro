@@ -1,98 +1,217 @@
-.dietitian-dashboard {
-  background: #f5f8fc;
-  min-height: 100vh;
-  font-family: "Poppins", sans-serif;
-  color: #0a192f;
+/* ===============================
+   GLOBAL RESET + BASE STYLES
+================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
+body,
+html {
+  width: 100%;
+  height: 100%;
+  font-family: "Inter", "Poppins", sans-serif;
+  background-color: #f8fdfb;
+  color: #123;
+}
+
+/* ===============================
+   DASHBOARD CONTAINER
+================================= */
+.dietitian-dashboard {
+  width: 100%;
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f9fffd 0%, #f1fbf7 100%);
+  padding-bottom: 3rem;
+  overflow-x: hidden;
+}
+
+/* ===============================
+   WELCOME SECTION
+================================= */
 .dietitian-welcome {
   text-align: center;
-  padding: 2rem 1rem;
-  background: #e3f2fd;
-  color: #0a192f;
-  border-bottom: 2px solid #00e5ff;
+  margin: 2rem auto 1rem;
+  padding: 1.5rem;
+  background: #ffffffb0;
+  backdrop-filter: blur(4px);
+  border-radius: 16px;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05);
 }
 
+.dietitian-welcome h2 {
+  color: #007b6e;
+  font-weight: 700;
+  font-size: 1.6rem;
+}
+
+.dietitian-welcome p {
+  color: #555;
+  margin-top: 0.6rem;
+  font-size: 0.95rem;
+}
+
+/* ===============================
+   DASHBOARD CARDS
+================================= */
 .dashboard-cards {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 1.5rem;
-  padding: 2rem;
+  gap: 1.2rem;
+  padding: 1.5rem 2rem;
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.card {
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 1.5rem;
   text-align: center;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  border: 1px solid #e3f7f1;
 }
 
-.dashboard-cards .card {
-  background: white;
-  padding: 1.8rem;
-  border-radius: 15px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  transition: all 0.4s ease;
-  border-left: 6px solid #00e5ff;
+.card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 6px 20px rgba(0, 128, 96, 0.1);
 }
 
-.dashboard-cards .card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0, 229, 255, 0.3);
+.card h3 {
+  color: #00796b;
+  font-size: 1rem;
+  margin-bottom: 0.8rem;
+  font-weight: 600;
 }
 
-.dashboard-cards h3 {
-  color: #007bff;
-  margin-bottom: 0.5rem;
-  font-size: 1.1rem;
-}
-
-.dashboard-cards p {
-  font-size: 2rem;
+.card p {
+  color: #009688;
+  font-size: 1.8rem;
   font-weight: 700;
-  color: #0a192f;
-  animation: countUp 1s ease-in-out;
 }
 
-@keyframes countUp {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
+/* ===============================
+   INSIGHTS SECTION
+================================= */
 .dietitian-insights {
-  margin: 2rem;
-  padding: 2rem;
-  background: #fff;
-  border-radius: 10px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  width: 95%;
+  max-width: 1150px;
+  margin: 2rem auto;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
 }
 
 .dietitian-insights h2 {
-  color: #007bff;
+  text-align: center;
+  color: #007b6e;
+  margin-bottom: 1.8rem;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 
+/* ===============================
+   CHART CONTAINERS
+================================= */
 .chart-section {
-  margin-top: 2rem;
-  background: #fff;
-  padding: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: linear-gradient(145deg, #f9fffd, #effbf5);
+  padding: 1.2rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 16px;
+  box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.03);
+  border: 1px solid #dcf5eb;
 }
 
 .chart-section h4 {
-  margin-bottom: 1rem;
-  color: #007bff;
-  text-align: center;
+  color: #00695c;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
 }
 
-@media (max-width: 768px) {
-  .chart-section {
-    padding: 1rem;
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+/* Tablets and small laptops */
+@media (max-width: 900px) {
+  .dietitian-welcome {
+    width: 95%;
+    padding: 1.2rem;
+  }
+
+  .dashboard-cards {
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+  }
+
+  .dietitian-insights {
+    padding: 1.5rem 1rem;
   }
 }
 
-@media (max-width: 768px) {
+/* Medium and small phones */
+@media (max-width: 600px) {
+  .dietitian-welcome h2 {
+    font-size: 1.3rem;
+  }
+
+  .dietitian-welcome p {
+    font-size: 0.9rem;
+  }
+
+  .dashboard-cards {
+    grid-template-columns: 1fr 1fr;
+    gap: 0.8rem;
+  }
+
+  .card {
+    padding: 1rem;
+    border-radius: 14px;
+  }
+
+  .card h3 {
+    font-size: 0.9rem;
+  }
+
+  .card p {
+    font-size: 1.4rem;
+  }
+
+  .dietitian-insights h2 {
+    font-size: 1.2rem;
+  }
+
+  .chart-section {
+    padding: 1rem 0.8rem;
+  }
+}
+
+/* Very small phones (≈320px wide) */
+@media (max-width: 400px) {
   .dashboard-cards {
     grid-template-columns: 1fr;
+  }
+
+  .dietitian-welcome {
+    padding: 1rem;
+  }
+
+  .card {
+    width: 100%;
+  }
+
+  .dietitian-insights {
+    padding: 1rem 0.8rem;
+  }
+
+  .chart-section h4 {
+    font-size: 0.9rem;
   }
 }

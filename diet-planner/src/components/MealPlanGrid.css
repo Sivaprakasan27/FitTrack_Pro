@@ -1,120 +1,227 @@
-/* ===== Meal Plan Section ===== */
-.plan-title {
+/* === MEAL GRID CONTAINER === */
+.meal-grid {
+  background: #ffffff;
+  border-radius: 18px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.05);
+  padding: 2rem;
+  width: 100%;
+  max-width: 950px;
+  margin: 2rem auto;
   text-align: center;
+  transition: 0.3s ease;
+}
+
+.meal-title {
   font-size: 1.8rem;
-  color: #007bff;
-  margin: 1.5rem 0;
+  color: #0077b6;
+  margin-bottom: 1.5rem;
   font-weight: 700;
-  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
 }
 
-/* ===== Grid Layout ===== */
-.mealplan-grid {
+/* === MEAL CARDS GRID === */
+.meal-cards {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
-  gap: 1.5rem;
-  padding: 1rem 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.2rem;
 }
 
-/* ===== Meal Cards ===== */
 .meal-card {
-  background: linear-gradient(145deg, #ffffff, #f0f8ff);
-  border: 1px solid #d9e9ff;
+  background: linear-gradient(145deg, #f0f9ff, #ffffff);
   border-radius: 14px;
-  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.1);
-  padding: 1.2rem 1.5rem;
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+  padding: 1.2rem;
+  box-shadow: 0 4px 15px rgba(0, 119, 182, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .meal-card:hover {
   transform: translateY(-6px);
-  box-shadow: 0 10px 22px rgba(0, 123, 255, 0.2);
+  box-shadow: 0 10px 22px rgba(0, 119, 182, 0.18);
 }
 
-/* ===== Day Title ===== */
-.meal-day {
-  font-size: 1.3rem;
+.meal-card h4 {
+  color: #00b4d8;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+
+.meal-item {
+  color: #333;
+  font-size: 0.95rem;
+  margin-bottom: 0.3rem;
+}
+
+.meal-calories {
+  font-weight: 600;
+  color: #0077b6;
+  margin-top: 0.4rem;
+}
+
+/* === MODAL BACKDROP === */
+.meal-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.55);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  backdrop-filter: blur(3px);
+}
+
+/* === MODAL BOX === */
+.meal-modal-content {
+  background: linear-gradient(135deg, #ffffff, #f9fcff);
+  padding: 2.3rem;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 480px;
+  box-shadow: 0 12px 30px rgba(0, 119, 182, 0.15);
+  animation: modalPop 0.35s ease;
+  position: relative;
+  text-align: center;
+  font-family: "Poppins", sans-serif;
+}
+
+/* === CLOSE ICON === */
+.close-modal {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  font-size: 1.5rem;
+  color: #777;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.close-modal:hover {
+  color: #0077b6;
+  transform: rotate(90deg);
+}
+
+/* === MODAL HEADINGS === */
+.meal-modal-content h3 {
+  color: #0077b6;
+  font-size: 1.4rem;
+  margin-bottom: 0.3rem;
   font-weight: 700;
-  color: #007bff;
-  margin-bottom: 0.6rem;
-  border-bottom: 2px solid #007bff;
-  padding-bottom: 0.3rem;
-  text-transform: capitalize;
 }
 
-/* ===== Meal List ===== */
-.meal-list {
+.meal-subtitle {
+  color: #777;
+  font-size: 1rem;
+  font-style: italic;
+  margin-bottom: 1.2rem;
+}
+
+/* === INGREDIENTS & NUTRITION === */
+.meal-modal-content h4 {
+  font-size: 1.05rem;
+  margin-top: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: #023e8a;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.meal-modal-content ul {
   list-style: none;
   padding: 0;
-  margin: 0.8rem 0;
+  margin-bottom: 1.2rem;
+  text-align: center;
 }
 
-.meal-list li {
-  margin: 0.4rem 0;
+.meal-modal-content ul li {
   color: #333;
   font-size: 0.95rem;
+  padding: 4px 0;
+  border-bottom: 1px dashed #e3f2fd;
+  max-width: 250px;
+  margin: 0 auto;
 }
 
-.meal-list strong {
-  color: #007bff;
-}
-
-/* ===== Nutrition Section ===== */
-.nutrition {
-  background: #eaf4ff;
-  border-radius: 10px;
-  padding: 0.6rem 0.8rem;
-  font-size: 0.85rem;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.5rem;
-  margin-top: 0.8rem;
-  color: #333;
-}
-
-.nutrition strong {
-  color: #0056b3;
-}
-
-/* ===== No Plan Card ===== */
-.no-plan.card {
-  background: linear-gradient(145deg, #ffffff, #f8fbff);
-  border: 1px solid #e0ecff;
-  border-radius: 14px;
-  text-align: center;
-  padding: 2rem;
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-  margin: 1.5rem auto;
-  width: 90%;
-  max-width: 450px;
-}
-
-.no-plan h3 {
-  color: #007bff;
-  margin-bottom: 0.5rem;
-}
-
-.no-plan p {
+.meal-modal-content p {
   color: #444;
   font-size: 0.95rem;
+  line-height: 1.6;
+  margin: 8px 0;
 }
 
-/* ===== Animations ===== */
-@keyframes fadeIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+/* === CALORIES === */
+.meal-calories-modal {
+  color: #0077b6;
+  font-weight: 600;
+  font-size: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 }
 
-/* ===== Responsive ===== */
-@media (max-width: 768px) {
-  .mealplan-grid {
-    grid-template-columns: 1fr;
-    padding: 0.5rem 1rem;
+/* === ANIMATIONS === */
+@keyframes modalPop {
+  from {
+    transform: scale(0.9);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* === RESPONSIVE DESIGN === */
+@media (max-width: 900px) {
+  .meal-cards {
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 700px) {
+  .meal-grid {
+    padding: 1.5rem;
   }
 
-  .meal-card {
-    padding: 1rem;
+  .meal-title {
+    font-size: 1.4rem;
+  }
+
+  .meal-card h4 {
+    font-size: 1.05rem;
+  }
+}
+
+@media (max-width: 500px) {
+  .meal-modal-content {
+    padding: 1.8rem;
+    border-radius: 16px;
+  }
+
+  .meal-modal-content h3 {
+    font-size: 1.2rem;
+  }
+
+  .meal-modal-content ul li {
+    font-size: 0.9rem;
+  }
+
+  .meal-modal-content h4 {
+    font-size: 1rem;
+  }
+
+  .meal-calories-modal {
+    font-size: 0.9rem;
   }
 }

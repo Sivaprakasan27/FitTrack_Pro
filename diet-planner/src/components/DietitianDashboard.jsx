@@ -2,12 +2,14 @@ import React, { useState, useEffect } from "react";
 import "./DietitianDashboard.css";
 import { useNavigate } from "react-router-dom";
 
+// Components
 import DietitianHeader from "./DietitianHeader";
 import DietitianClients from "./DietitianClients";
 import DietitianReports from "./DietitianReports";
 import DietitianFeedback from "./DietitianFeedback";
+import DietitianContacts from "./DietitianContacts";
 import DietitianProfile from "./DietitianProfile";
-import DietitianSettings from "./DietitianSettings";
+
 import {
   LineChart,
   Line,
@@ -36,7 +38,7 @@ const DietitianDashboard = () => {
   const [weightTrend, setWeightTrend] = useState([]);
   const [goalStages, setGoalStages] = useState([]);
 
-  // Load data
+  // Load initial data and refresh every few seconds
   useEffect(() => {
     const currentUser = JSON.parse(localStorage.getItem("currentUser"));
     if (currentUser?.username) setUsername(currentUser.username);
@@ -46,6 +48,7 @@ const DietitianDashboard = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Update dashboard statistics
   const updateStats = () => {
     const users = JSON.parse(localStorage.getItem("users")) || [];
     const feedbacks = JSON.parse(localStorage.getItem("dieterFeedback")) || [];
@@ -72,7 +75,7 @@ const DietitianDashboard = () => {
       goalsAchieved: goals.length,
     });
 
-    // Weight Trend (average of all dieters)
+    // Average weight trend
     const dateMap = {};
     dieters.forEach((d) => {
       d.goal?.dailyLogs?.forEach((log) => {
@@ -89,7 +92,7 @@ const DietitianDashboard = () => {
     }));
     setWeightTrend(trend.sort((a, b) => new Date(a.date) - new Date(b.date)));
 
-    // Goal Completion Stages
+    // Goal stage distribution
     const stages = { "25%": 0, "50%": 0, "75%": 0, "100%": 0 };
     dieters.forEach((d) => {
       const g = d.goal;
@@ -119,8 +122,8 @@ const DietitianDashboard = () => {
   };
 
   const handleLogout = () => {
-  localStorage.removeItem("currentUser");
-  navigate("/login");
+    localStorage.removeItem("currentUser");
+    navigate("/login");
   };
 
   const handleNavigate = (tab) => setActiveTab(tab);
@@ -135,7 +138,7 @@ const DietitianDashboard = () => {
         onViewSettings={() => setShowSettings(true)}
       />
 
-      {/* ======= DASHBOARD ======= */}
+      {/* ======= DASHBOARD TAB ======= */}
       {activeTab === "dashboard" && (
         <>
           <section className="dietitian-welcome">
@@ -166,11 +169,10 @@ const DietitianDashboard = () => {
             </div>
           </section>
 
-          {/* Progress Analytics */}
+          {/* Charts */}
           <section className="dietitian-insights">
             <h2>📊 Progress Analytics</h2>
 
-            {/* Weight Trend */}
             <div className="chart-section">
               <h4>📈 Average Weight Trend</h4>
               {weightTrend.length > 0 ? (
@@ -194,7 +196,6 @@ const DietitianDashboard = () => {
               )}
             </div>
 
-            {/* Goal Completion Chart */}
             <div className="chart-section">
               <h4>🏆 Goal Completion Distribution</h4>
               <ResponsiveContainer width="100%" height={250}>
@@ -212,21 +213,23 @@ const DietitianDashboard = () => {
         </>
       )}
 
-      {/* ======= CLIENTS SECTION ======= */}
+      {/* ======= CLIENTS ======= */}
       {activeTab === "clients" && <DietitianClients />}
 
-      {/* ======= REPORTS SECTION ======= */}
+      {/* ======= REPORTS ======= */}
       {activeTab === "reports" && <DietitianReports />}
 
-      {/* ======= FEEDBACK SECTION ======= */}
+      {/* ======= FEEDBACK ======= */}
       {activeTab === "feedback" && <DietitianFeedback />}
 
-      {/* ======= PROFILE OVERLAY ======= */}
-      {showProfile && <DietitianProfile onClose={() => setShowProfile(false)} />}
+      {/* ======= CONTACTS ======= */}
+      {activeTab === "contacts" && <DietitianContacts />}
 
-      {/* ======= SETTINGS OVERLAY ======= */}
-      {showSettings && (
-        <DietitianSettings onClose={() => setShowSettings(false)} />
+     
+
+      {/* ======= PROFILE OVERLAY ======= */}
+      {showProfile && (
+        <DietitianProfile onClose={() => setShowProfile(false)} />
       )}
     </div>
   );

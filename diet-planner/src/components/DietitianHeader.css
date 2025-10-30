@@ -1,105 +1,203 @@
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* ===============================
+   HEADER CONTAINER
+ */
 .dietitian-header {
+  width: 100%;
+  background: linear-gradient(90deg, #009688, #00bfa5);
+  color: #ffffff;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #0a192f;
-  color: #fff;
-  padding: 0.8rem 2rem;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  padding: 0.9rem 2rem;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(0, 128, 96, 0.15);
 }
 
+/* ===============================
+   LOGO SECTION
+ */
 .dietitian-logo {
-  font-size: 1.4rem;
-  font-weight: 600;
   display: flex;
   align-items: center;
-  gap: 8px;
-  color: #00e5ff;
+  font-size: 1.3rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
 }
 
+.dietitian-logo span {
+  margin-left: 0.4rem;
+  color: #ffffff;
+  font-weight: 700;
+}
+
+/* ===============================
+   NAVIGATION
+*/
 .dietitian-nav ul {
   display: flex;
   list-style: none;
   gap: 2rem;
-  margin: 0;
 }
 
 .dietitian-nav li {
   cursor: pointer;
+  font-size: 1rem;
   font-weight: 500;
+  color: #e3fef6;
   position: relative;
   transition: color 0.3s ease;
 }
 
-.dietitian-nav li::after {
+.dietitian-nav li:hover {
+  color: #ffffff;
+}
+
+.dietitian-nav li.active {
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.dietitian-nav li.active::after {
   content: "";
   position: absolute;
   bottom: -6px;
   left: 0;
-  width: 0%;
-  height: 2px;
-  background: #00e5ff;
-  transition: width 0.3s ease;
+  right: 0;
+  height: 2.5px;
+  background: #ffffff;
+  border-radius: 2px;
 }
 
-.dietitian-nav li:hover {
-  color: #00e5ff;
-}
-
-.dietitian-nav li:hover::after,
-.dietitian-nav li.active::after {
-  width: 100%;
-}
-
+/* ===============================
+   PROFILE SECTION
+*/
 .dietitian-profile {
   position: relative;
 }
 
 .dietitian-profile-btn {
-  background: transparent;
-  border: 2px solid #00e5ff;
-  color: #00e5ff;
-  padding: 0.4rem 1rem;
-  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  color: #ffffff;
+  padding: 0.5rem 1rem;
+  border-radius: 25px;
   cursor: pointer;
-  transition: background 0.3s;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
 }
 
 .dietitian-profile-btn:hover {
-  background: rgba(0, 229, 255, 0.1);
+  background: rgba(255, 255, 255, 0.3);
+  transform: scale(1.05);
 }
 
+/* Dropdown Menu */
 .dietitian-dropdown {
-  display: none;
   position: absolute;
   right: 0;
   top: 110%;
-  background: #112240;
-  border: 1px solid #00e5ff;
-  border-radius: 8px;
+  background: #ffffff;
+  color: #00796b;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 128, 96, 0.15);
   overflow: hidden;
   min-width: 150px;
-  box-shadow: 0 4px 10px rgba(0, 229, 255, 0.2);
-}
-
-.dietitian-profile:hover .dietitian-dropdown {
-  display: block;
+  animation: fadeIn 0.25s ease-in-out;
 }
 
 .dietitian-dropdown p {
+  padding: 0.8rem 1rem;
   margin: 0;
-  padding: 0.7rem 1rem;
   cursor: pointer;
-  transition: background 0.3s;
+  transition: background 0.3s ease;
 }
 
 .dietitian-dropdown p:hover {
-  background: rgba(0, 229, 255, 0.1);
+  background: #e0f7f3;
 }
 
-.logout {
-  color: #ff4d4d;
+.dietitian-dropdown .logout {
+  color: #e53935;
+  font-weight: 600;
+}
+
+/* ===============================
+   RESPONSIVE DESIGN
+================================= */
+
+/* Tablets and smaller */
+@media (max-width: 900px) {
+  .dietitian-header {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .dietitian-logo {
+    width: 100%;
+    justify-content: center;
+    margin-bottom: 0.5rem;
+  }
+
+  .dietitian-nav ul {
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .dietitian-nav li {
+    font-size: 0.95rem;
+  }
+}
+
+/* Phones */
+@media (max-width: 600px) {
+  .dietitian-header {
+    flex-direction: column;
+    gap: 0.6rem;
+    padding: 1rem;
+  }
+
+  .dietitian-logo {
+    font-size: 1.1rem;
+  }
+
+  .dietitian-nav ul {
+    gap: 1rem;
+  }
+
+  .dietitian-nav li {
+    font-size: 0.9rem;
+  }
+
+  .dietitian-profile-btn {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ===============================
+   ANIMATIONS
+================================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }

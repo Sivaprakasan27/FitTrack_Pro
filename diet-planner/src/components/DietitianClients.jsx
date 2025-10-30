@@ -152,49 +152,70 @@ const DietitianClients = () => {
               <>
                 <h3>✏️ Edit Client</h3>
                 <div className="client-details">
+                  <label htmlFor="name">Full Name</label>
                   <input
+                    id="name"
                     type="text"
                     name="name"
                     placeholder="Name"
                     value={editedClient.name || ""}
                     onChange={handleChange}
                   />
+
+                  <label htmlFor="email">Email</label>
                   <input
+                    id="email"
                     type="email"
                     name="email"
                     placeholder="Email"
                     value={editedClient.email || ""}
                     onChange={handleChange}
                   />
+
+                  <label htmlFor="age">Age</label>
                   <input
+                    id="age"
                     type="number"
                     name="age"
                     placeholder="Age"
                     value={editedClient.age || ""}
+                    min={0}
                     onChange={handleChange}
                   />
+
+                  <label htmlFor="height">Height (cm)</label>
                   <input
+                    id="height"
                     type="number"
                     name="height"
                     placeholder="Height (cm)"
                     value={editedClient.height || ""}
+                    min={0}
                     onChange={handleChange}
                   />
+
+                  <label htmlFor="weight">Current Weight (kg)</label>
                   <input
+                    id="weight"
                     type="number"
                     name="weight"
                     placeholder="Current Weight (kg)"
                     value={editedClient.weight || ""}
+                    min={0}
                     onChange={handleChange}
                   />
+
+                  <label htmlFor="password">New Password</label>
                   <input
+                    id="password"
                     type="password"
                     name="password"
-                    placeholder="New Password"
+                    placeholder="Enter new password"
                     value={editedClient.password || ""}
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="btn-row">
                   <button className="btn-save" onClick={handleSave}>
                     Save
