@@ -12,9 +12,7 @@ import {
 } from "recharts";
 
 const DieterSettings = ({ user, onClose }) => {
-  const [reminder, setReminder] = useState(
-    localStorage.getItem("reminder") === "true"
-  );
+ 
   const [feedback, setFeedback] = useState("");
 
   // PDF Report
@@ -145,13 +143,7 @@ const DieterSettings = ({ user, onClose }) => {
     doc.save(`${user?.username || "Dieter"}_Report.pdf`);
   };
 
-  //  Toggle Daily Reminder
-  const handleReminderToggle = () => {
-    const newState = !reminder;
-    setReminder(newState);
-    localStorage.setItem("reminder", newState);
-  };
-
+  
   //  Feedback Submit
   const handleFeedbackSubmit = () => {
     if (feedback.trim()) {
@@ -225,19 +217,6 @@ const DieterSettings = ({ user, onClose }) => {
           )}
         </div>
 
-        {/*  Daily Reminder */}
-        <div className="settings-section reminder-toggle">
-          <h4>🔔 Daily Reminders</h4>
-          <label className="switch">
-            <input
-              type="checkbox"
-              checked={reminder}
-              onChange={handleReminderToggle}
-            />
-            <span className="slider"></span>
-          </label>
-          <p>{reminder ? "Reminders ON" : "Reminders OFF"}</p>
-        </div>
 
         {/*  Feedback */}
         <div className="settings-section">
