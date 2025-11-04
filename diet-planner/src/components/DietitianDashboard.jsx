@@ -28,7 +28,6 @@ const DietitianDashboard = () => {
   const [username, setUsername] = useState("");
   const [activeTab, setActiveTab] = useState("dashboard");
   const [showProfile, setShowProfile] = useState(false);
-  const [showSettings, setShowSettings] = useState(false);
   const [stats, setStats] = useState({
     totalDieters: 0,
     reports: 0,
@@ -135,7 +134,6 @@ const DietitianDashboard = () => {
         onLogout={handleLogout}
         onNavigate={handleNavigate}
         onViewProfile={() => setShowProfile(true)}
-        onViewSettings={() => setShowSettings(true)}
       />
 
       {/* ======= DASHBOARD TAB ======= */}
